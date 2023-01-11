@@ -7,8 +7,8 @@ import Featured from '../components/Featured';
 import PizzaList from '../components/PizzaList';
 
 export default function Home({ pizzaList, admin }) {
-  const [close, setClose] = useState(true)
-  
+  const [close, setClose] = useState(true);
+
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function Home({ pizzaList, admin }) {
       <Featured />
       {admin && <AddButton setClose={setClose} />}
       <PizzaList pizzaList={pizzaList} />
-      {!close && <Add setClose={setClose} /> }
+      {!close && <Add setClose={setClose} />}
     </>
   );
 }
@@ -29,15 +29,15 @@ export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || '';
   let admin = false;
 
-  if(myCookie.token === process.env.TOKEN){
-    admin = true
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
   }
 
-  const res = await axios.get('http://localhost:3000/api/products');
+  const res = await axios.get(`${process.env.VERCEL_URL}/api/products`);
   return {
     props: {
       pizzaList: res.data,
-      admin
+      admin,
     },
   };
 };
