@@ -124,7 +124,7 @@ export default function Product({ pizza }) {
 
 export const getServerSideProps = async ({ params }) => {
   const res = await axios.get(
-    `${process.env.VERCEL_URL}/api/products/${params.id}`
+    `https://pizza-app-rho.vercel.app/api/products/${params.id}`
   );
   return {
     props: {

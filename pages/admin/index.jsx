@@ -9,7 +9,7 @@ export default function Admin({ orders, products }) {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `${process.env.VERCEL_URL}/api/products/` + id
+        `https://pizza-app-rho.vercel.app/api/products/` + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -22,7 +22,7 @@ export default function Admin({ orders, products }) {
     const currentStatus = item.status;
 
     try {
-      const res = await axios.put(`${process.env.VERCEL_URL}/api/orders/` + id, {
+      const res = await axios.put(`https://pizza-app-rho.vercel.app/api/orders/` + id, {
         status: currentStatus + 1,
       });
       setOrderList([
@@ -130,8 +130,8 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   }
-  const productRes = await axios.get(`${process.env.VERCEL_URL}/api/products`);
-  const orderRes = await axios.get(`${process.env.VERCEL_URL}/api/orders`);
+  const productRes = await axios.get(`https://pizza-app-rho.vercel.app/api/products`);
+  const orderRes = await axios.get(`https://pizza-app-rho.vercel.app/api/orders`);
 
   return {
     props: {

@@ -35,7 +35,7 @@ export default function Add({ setClose }) {
         title, desc, prices, extraOptions, img: url,
       }
 
-      await axios.post(`${process.env.VERCEL_URL}/api/products`, newProduct)
+      await axios.post(`https://pizza-app-rho.vercel.app/api/products`, newProduct)
       setClose(true)
     } catch (err) {
       console.log(err);

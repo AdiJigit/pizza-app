@@ -10,7 +10,7 @@ export default function Login() {
 
   const handleClick = async () => {
     try {
-      await axios.post(`${process.env.VERCEL_URL}/api/login`, {
+      await axios.post(`https://pizza-app-rho.vercel.app/api/login`, {
         username,
         password,
       });
